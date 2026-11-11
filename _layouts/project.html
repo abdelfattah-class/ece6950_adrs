@@ -1,0 +1,86 @@
+---
+layout: cmu
+---
+{% comment %}
+  Layout for a single class project. Students don't edit this file;
+  they fill in the front matter of their own file in _projects/.
+{% endcomment %}
+
+<style>
+  .project-body h2 { font-size: 1.4rem; margin-top: 1.5rem; }
+  .project-body h3 { font-size: 1.15rem; margin-top: 1.25rem; }
+  .project-body img { max-width: 100%; }
+  .report-frame { width: 100%; height: 800px; border: 1px solid #dee2e6; }
+</style>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="mb-2"><a href="projects.html">&larr; All class projects</a></p>
+    <h1 class="h2 mb-1">
+      {{ page.title }}
+      {% if page.sample %}<span class="badge badge-secondary align-middle" style="font-size:.5em">Sample</span>{% endif %}
+    </h1>
+    {% if page.team %}<p class="lead mb-1">{{ page.team | join: ", " }}</p>{% endif %}
+    {% if page.tagline %}<p class="text-muted">{{ page.tagline }}</p>{% endif %}
+  </div>
+</div>
+
+<hr />
+
+{% if page.youtube_id %}
+<div class="row mb-4">
+  <div class="col-lg-10 offset-lg-1">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item"
+              src="https://www.youtube-nocookie.com/embed/{{ page.youtube_id }}"
+              title="{{ page.title | escape }} video"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+{% elsif page.sample %}
+<div class="row mb-4">
+  <div class="col-lg-10 offset-lg-1">
+    <div class="embed-responsive embed-responsive-16by9 bg-light border">
+      <div class="embed-responsive-item d-flex align-items-center justify-content-center text-muted">
+        Your YouTube video appears here (set <code class="mx-1">youtube_id</code> in your project file)
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if page.report %}
+<div class="row mb-3">
+  <div class="col-md-12">
+    <a class="btn btn-dark" href="{{ page.report }}" target="_blank" rel="noopener">
+      Final report (PDF)
+    </a>
+    {% if page.code %}
+    <a class="btn btn-outline-dark ml-2" href="{{ page.code }}" target="_blank" rel="noopener">Code</a>
+    {% endif %}
+  </div>
+</div>
+{% elsif page.code %}
+<div class="row mb-3">
+  <div class="col-md-12">
+    <a class="btn btn-outline-dark" href="{{ page.code }}" target="_blank" rel="noopener">Code</a>
+  </div>
+</div>
+{% endif %}
+
+<div class="row">
+  <div class="col-md-12 project-body">
+    {{ content }}
+  </div>
+</div>
+
+{% if page.report and page.embed_report != false %}
+<div class="row mt-4">
+  <div class="col-md-12">
+    <p class="lead">Report</p>
+    <iframe class="report-frame" src="{{ page.report }}" title="{{ page.title | escape }} report"></iframe>
+  </div>
+</div>
+{% endif %}

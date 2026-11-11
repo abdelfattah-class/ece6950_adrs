@@ -10,5 +10,19 @@ github_username:  lipsum
 # Build settings
 markdown: kramdown
 #theme: cmu
+
+# Class projects: each file in _projects/ becomes one project page.
+# Pages are written to the site root (e.g. project-my-team.html) so the
+# layout's relative links to vendor/ and favicon.ico keep working.
 collections:
+  projects:
+    output: true
+    permalink: /project-:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
 
