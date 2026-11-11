@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f2a44"/>
+      <stop offset="1" stop-color="#b31b1b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3">
+    <circle cx="300" cy="360" r="70"/><circle cx="640" cy="200" r="70"/>
+    <circle cx="640" cy="520" r="70"/><circle cx="980" cy="360" r="70"/>
+    <path d="M365 330 L575 225 M365 390 L575 495 M705 225 L915 330 M705 495 L915 390 M640 270 L640 450"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.9">
+    <circle cx="300" cy="360" r="18"/><circle cx="640" cy="200" r="18"/>
+    <circle cx="640" cy="520" r="18"/><circle cx="980" cy="360" r="18"/>
+  </g>
+  <text x="640" y="660" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="44" fill="#ffffff" fill-opacity="0.85">Sample project thumbnail</text>
+</svg>

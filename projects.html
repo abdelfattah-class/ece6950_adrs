@@ -1,0 +1,62 @@
+---
+layout: cmu
+title: Class Projects
+---
+
+<style>
+  .project-card { transition: box-shadow .15s ease, transform .15s ease; }
+  .project-card:hover { box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); transform: translateY(-2px); }
+  .project-card a.stretched { color: inherit; text-decoration: none; }
+  .project-thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #e9ecef; }
+  .project-thumb-empty { display: flex; align-items: center; justify-content: center; color: #6c757d; }
+</style>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead">Class Projects</p>
+    <p>Final projects from ECE 6950. Click a project to see its video, report, and summary.</p>
+  </div>
+</div>
+
+{% assign projects = site.projects | sort: "title" %}
+
+{% if projects.size == 0 %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card border-light bg-light p-4 text-center text-muted">
+      No projects have been posted yet. Check back at the end of the semester!
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="row">
+  {% for project in projects %}
+  {% assign project_link = project.url | remove_first: "/" %}
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card h-100 project-card">
+      <a class="stretched" href="{{ project_link }}">
+        {% if project.thumbnail %}
+        <img class="card-img-top project-thumb" src="{{ project.thumbnail }}" alt="{{ project.title | escape }}">
+        {% else %}
+        <div class="card-img-top project-thumb project-thumb-empty">No thumbnail</div>
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title mb-1">
+            {{ project.title }}
+            {% if project.sample %}<span class="badge badge-secondary align-middle">Sample</span>{% endif %}
+          </h5>
+          {% if project.team %}<p class="card-text text-muted mb-1"><small>{{ project.team | join: ", " }}</small></p>{% endif %}
+          {% if project.tagline %}<p class="card-text">{{ project.tagline }}</p>{% endif %}
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="row">
+  <div class="col-md-12">
+    <a href=".">&larr; Back to course page</a>
+  </div>
+</div>
